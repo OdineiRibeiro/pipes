@@ -1,6 +1,6 @@
 from subprocess import Popen, PIPE, STDOUT
 
-print 'launching slave process...'
+print('launching slave process...')
 slave = Popen(['ruby', 'slave.rb'], stdin=PIPE, stdout=PIPE, stderr=STDOUT)
 
 while True:
@@ -14,7 +14,7 @@ while True:
     while True:
         # check if slave has terminated:
         if slave.poll() is not None:
-            print 'slave has terminated.'
+            print('slave has terminated.')
             exit()
         # read one line, remove newline chars and trailing spaces:
         line = slave.stdout.readline().rstrip()
@@ -22,5 +22,5 @@ while True:
         if line == '[end]':
             break
         result.append(line)
-    print 'result:'
-    print '\n'.join(result)
+    print('result:')
+    print('\n'.join(result))
